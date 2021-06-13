@@ -2,6 +2,7 @@ package edu.infnet.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -91,6 +92,10 @@ public class Cliente implements Serializable{
 		return true;
 	}
 
+	public interface ClienteService {
+		Collection<Cliente> getClientes();
+		Cliente addBook(Cliente cliente);
+	}
 	
 	
 }

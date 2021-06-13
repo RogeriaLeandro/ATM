@@ -34,6 +34,9 @@ public class Transacao implements Serializable{
 	@Column(name = "valor")
 	private double valor;
 	
+	@Column(name = "saldoMomento")
+	private double saldoMomento;
+	
 	@ManyToOne()
 	@JoinColumn(name = "numero")
 	private Conta conta;
@@ -42,12 +45,14 @@ public class Transacao implements Serializable{
 		
 	}
 
-	public Transacao(Integer idTransacao, TipoTransacao tipoTransacao, double valor, Conta conta) {
+	public Transacao(Integer idTransacao, TipoTransacao tipoTransacao, double valor, double saldoMomento, Conta conta) {
 		super();
 		this.idTransacao = idTransacao;
 		this.tipoTransacao = tipoTransacao;
 		this.valor = valor;
+		this.saldoMomento = saldoMomento;
 		this.conta = conta;
+		
 	}
 
 	public Integer getIdTransacao() {
@@ -80,6 +85,14 @@ public class Transacao implements Serializable{
 
 	public void setConta(Conta conta) {
 		this.conta = conta;
+	}
+
+	public double getSaldoMomento() {
+		return saldoMomento;
+	}
+
+	public void setSaldoMomento(double saldoMomento) {
+		this.saldoMomento = saldoMomento;
 	}
 
 	@Override

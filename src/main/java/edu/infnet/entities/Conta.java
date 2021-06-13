@@ -107,7 +107,6 @@ public class Conta implements Serializable{
 		this.cliente = cliente;
 	}
 
-
 	public List<Transacao> getTransacoes() {
 		return transacoes;
 	}

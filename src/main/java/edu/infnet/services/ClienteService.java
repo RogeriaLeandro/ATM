@@ -26,4 +26,8 @@ public class ClienteService {
 		return cliente.get();
 	}
 	
+	public Cliente addCliente(Cliente cliente) {
+		
+		return clienteRepository.save(cliente);
+	}
 }
