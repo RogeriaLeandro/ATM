@@ -25,6 +25,19 @@ public class TransacaoResource {
 	@Autowired
 	private ContaService contaService;
 	
+	@GetMapping(value = "/transacao2")
+    public ModelAndView getMainPage() {
+		
+		ModelAndView modelAndView = new ModelAndView("principal");
+		
+//		modelAndView.addObject("clientes", clienteService.getClientes());
+//		modelAndView.addObject("coletores", coletorService.getColetores());
+//		modelAndView.addObject("emprestimos", emprestimoService.getEmprestimos());
+		
+		
+		return modelAndView;
+    }
+	
 	@GetMapping(value = "/transacoes")
     public ModelAndView getPagamentos(@RequestParam("numero") int numero) {
 		
