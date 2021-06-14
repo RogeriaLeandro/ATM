@@ -1,1 +1,0 @@
-<jsp:forward page="views/bodyExample.jsp"></jsp:forward>

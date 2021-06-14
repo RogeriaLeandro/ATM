@@ -12,11 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.infnet.entities.Conta;
 import edu.infnet.entities.Transacao;
+import edu.infnet.services.ClienteService;
 import edu.infnet.services.ContaService;
 import edu.infnet.services.TransacaoService;
 
 @RestController
-@RequestMapping
+@RequestMapping(value="/atm")
 public class TransacaoResource {
 	
 	@Autowired
@@ -25,29 +26,18 @@ public class TransacaoResource {
 	@Autowired
 	private ContaService contaService;
 	
-	@GetMapping(value = "/transacao2")
+	@Autowired
+	private ClienteService clienteService;
+	
+	
+	@GetMapping(value = "/")
     public ModelAndView getMainPage() {
 		
-		ModelAndView modelAndView = new ModelAndView("principal");
+		ModelAndView modelAndView = new ModelAndView("index");
 		
-//		modelAndView.addObject("clientes", clienteService.getClientes());
-//		modelAndView.addObject("coletores", coletorService.getColetores());
-//		modelAndView.addObject("emprestimos", emprestimoService.getEmprestimos());
-		
-		
-		return modelAndView;
-    }
-	
-	@GetMapping(value = "/transacoes")
-    public ModelAndView getPagamentos(@RequestParam("numero") int numero) {
-		
-		Conta conta = contaService.findById(numero);
-		List<Transacao> transacoes = transacaoService.findByConta(conta);
-		
-		ModelAndView modelAndView = new ModelAndView("transacoes");
-		
-		modelAndView.addObject("transacoes", transacoes);
-		modelAndView.addObject("conta", conta);
+		modelAndView.addObject("transações", transacaoService.findAll());
+		modelAndView.addObject("clientes", clienteService.findAll());
+		modelAndView.addObject("contas", contaService.findAll());
 		
 		return modelAndView;
     }
